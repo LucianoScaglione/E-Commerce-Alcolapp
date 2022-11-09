@@ -1,0 +1,75 @@
+.linkUrl {
+  text-decoration: none;
+}
+
+.volver {
+  margin-left: 10px;
+  margin-top: 10px;
+  font-weight: 700;
+  color: rgb(75, 64, 64);
+  display: inline-flex;
+}
+
+.contenedorPrincipal {
+  padding: 60px 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedorImagen { 
+  display: flex;
+  justify-content: space-between;
+}
+
+.imagen {
+  height: 400px;
+  width: 400px;
+  margin-right: 50px;
+}
+
+.contenedorDatos {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+}
+
+.titulo {
+  font-size: 20px;
+  max-width: 430px;
+}
+
+.contenedorParrafos {
+  justify-content: center;
+  display: flex;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.342);
+  border-top: 1px solid rgba(128, 128, 128, 0.342);
+  width: 430px;
+}
+
+.contenedorParrafos p {
+  margin-right: 10px;
+}
+
+.button {
+  background-color: rgb(31 41 55);
+  color: white;
+  border-color: rgb(31 41 55);
+  font-size: 20px;
+  font-weight: 900;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  width: 430px;
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.contenedorTexto {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.342);
+  border-top: 1px solid rgba(128, 128, 128, 0.342);
+  width: 430px;
+}

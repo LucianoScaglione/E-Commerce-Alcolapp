@@ -1,0 +1,115 @@
+.contenedor {
+    background-image: url('../../images/amarillo.jpg');
+    height: 100vh;
+    background-position: center;
+    overflow: scroll;
+    overflow-x: hidden; 
+    background-size: 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.card {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.contenedorCard {
+    background-image: url('../../images/fondoLogin.jpg');
+    background-position: center;
+    width: 30%;
+    height: 370px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.campos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.campos h4 {
+    color: white;
+    font-size: 30px;
+}
+
+.campos form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.campos input {
+    width: 300px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+.campos button {
+    font-weight: 700;
+    width: 309px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.campos button:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.texto {
+    color: white;
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.link {
+    color: black;
+}
+
+
+
+
+.cardRegister {
+    display: flex;
+    justify-content: center;
+    /* margin-top: 20px; */
+}
+
+.contenedorCardRegister {
+    display: flex;
+    background-image: url('../../images/fondoLogin.jpg');
+    background-position: center;
+    width: 30%;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.contenedorCardRegister button{
+    margin-bottom: 40px;
+}
+
+.contenedorCardRegister button:hover{
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.linkUrl {
+    text-decoration: none;
+}
+
+.volver {
+   margin-left: 10px;
+   margin-top: 10px;
+   font-weight: 700;
+   color: gray;
+   display: inline-flex;
+}
+
+.volver:hover {
+    color: white;
+}

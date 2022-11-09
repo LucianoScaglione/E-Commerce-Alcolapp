@@ -1,0 +1,21 @@
+.contenedorPadre {
+  display: flex;
+  background-color: rgb(17 24 39);
+  justify-content: center;
+}
+
+.contenedorNav {
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
+}
+
+.contenedorNav p {
+  display: flex;
+  margin-left: 70px;
+  margin-right: 70px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  color: white;
+}

@@ -1,0 +1,41 @@
+.contenedor {
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    padding: 20px;
+    font-weight: 700;
+}
+
+.contenedorAsideArticle {
+    display: flex;
+    flex-direction: row;
+}
+
+.aside {
+    position: fixed;
+    color: rgb(158, 146, 146);
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* max-height: 200px; */
+}
+
+.aside p {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.pMarcado {
+    border-bottom: 2px solid gray;
+}
+
+.article {
+    display: flex;
+    margin-left: 10px;
+    padding: 0px 10px;
+}

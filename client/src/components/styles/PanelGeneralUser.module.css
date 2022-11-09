@@ -1,0 +1,58 @@
+.principal {
+  display: flex;
+  justify-content: center;
+}
+
+.contenedorImagen {
+    margin-left: 35px;
+    border-radius: 9999px;
+    height: 270px;
+    width: 270px;
+}
+
+.contenedorImagen img {
+    height: 270px;
+    width: 270px;
+    border-radius: 9999px;
+}
+
+.contenedorDatos {
+  display: flex;
+  align-items: center;
+}
+
+.contenedorDatos p {
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom: 1px solid black;
+}
+
+.contenedorDatos i {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form input {
+  width: 300px;
+  height: 30px;
+  margin-bottom: 20px;
+  font-size: 17px;
+}
+
+.linkUrl {
+  text-decoration: none;
+}
+
+.volver {
+  margin-left: 10px;
+  margin-top: 10px;
+  font-weight: 700;
+  color: rgb(75, 64, 64);
+  display: inline-flex;
+}

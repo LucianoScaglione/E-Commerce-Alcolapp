@@ -1,0 +1,41 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor button {
+  margin: 5px 5px;
+  width: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border-color: white;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.imagenes {
+  width: 100%;
+  max-height: 350px;
+}
+
+.slide {
+  width: 100%;
+  max-height: 350px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.contenedor button {
+  display: flex;
+}
+
+.contenedor img {
+  width: 15px;
+}

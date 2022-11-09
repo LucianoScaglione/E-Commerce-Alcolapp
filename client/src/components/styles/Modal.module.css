@@ -1,0 +1,107 @@
+.principal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* background-color: rgba(0,0,0,.2); */
+    background-color: rgba(0, 0, 0, 0.678);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedorModal {
+    width: 500px;
+    min-height: 100px;
+    background-color:rgb(203 213 225);
+    position: relative;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.contenedorTituloModal {
+    display: flex;
+    text-align: center;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.contenedorTituloModal h3 {
+    font-weight: 700;
+    font-size: 16px;
+    margin-left: 4px;
+}
+
+.botonCerrar {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: none;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 5px;
+    color: black;
+}
+
+.botonCerrar:hover {
+    color: red;
+}
+
+.contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenido form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenido h2 {
+    border-bottom: 2px solid gray;
+    margin-bottom: 30px;
+}
+
+.contenido label {
+    font-size: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: black;
+}
+
+.contenido input {
+    width: 170%;
+    height: 30px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.divButtonConfirmar {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    margin-right: 30px;
+}
+
+.divButtonConfirmar button {
+    width: 100px;
+    height: 30px;
+    background-color: none;
+    border: none;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 5px;
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.divButtonConfirmar button:hover {
+   color: green;
+}
