@@ -39,10 +39,25 @@
 }
 
 .form input {
+  background-color: whitesmoke;
   width: 300px;
   height: 30px;
   margin-bottom: 20px;
   font-size: 17px;
+  border: none;
+  align-items: center;
+}
+
+.button {
+  margin-top: 10px;
+  width: 305px;
+  height: 35px;
+  font-size: 17px;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  background-color: green;
+  border: none;
 }
 
 .linkUrl {
@@ -55,4 +70,21 @@
   font-weight: 700;
   color: rgb(75, 64, 64);
   display: inline-flex;
+}
+
+.contenedorImagen2 {
+  margin-right: 20px;
+}
+
+.contenedorImagen2 img {
+  height: 270px;
+  width: 270px;
+  border-radius: 9999px;
+}
+
+.row {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
