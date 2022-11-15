@@ -30,7 +30,7 @@
 .contenedorDatos i {
   margin-left: 10px;
   font-size: 20px;
-}
+} 
 
 .form {
   display: flex;
@@ -87,4 +87,109 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.margenForm {
+  margin-top: 5px;
+}
+
+/*MIS COMPRAS*/
+
+.contenedorPadre {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.divContenedorDatos {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid gray;
+  margin-bottom: 40px;
+  margin: 20px;
+}
+
+.contenedorProductos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 850px;
+  padding-left: 50px;
+  background-color: rgba(0, 0, 255, 0.281);
+
+}
+
+.divProductos {
+  display: inline-flex;
+  flex-direction: column;
+  width: 250px;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.divProductos img {
+  width: 150px;
+  height: 150px;
+  margin-left: 30px;
+  border-radius: 15px;
+}
+
+.divProductos p {
+  font-weight: 600;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  margin-right: 40px;
+}
+
+.contenedorOrden {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+  background-color: lightblue;
+  background-color: rgba(0, 0, 255, 0.281);
+  border-right: 1px solid gray;
+}
+
+.contenedorOrden p {
+  font-weight: 700;
+  font-size: 30px;
+  color: black;
+}
+
+.divComentario {
+  display: flex;
+  justify-content: center;
+}
+
+.textarea {
+  height: 50px;
+  width: 110vh;
+  display: flex;
+  margin-bottom: 10px;
+  margin-right: 48px;
+  font-size: 20px;
+  background-color: white;
+  resize: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.divProductosPrincipal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sinOrdenes {
+  display: flex;
+  justify-content: center;
+  
+}
+.sinOrdenes p {
+  font-size: 30px;
+  font-weight: 550;
 }

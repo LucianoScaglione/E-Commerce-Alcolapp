@@ -25,13 +25,16 @@ let entries = Object.entries(sequelize.models);
 let capsEntries = entries.map((entry) => [entry[0][0].toUpperCase() + entry[0].slice(1), entry[1]]);
 sequelize.models = Object.fromEntries(capsEntries);
 
-const { Productos, Usuarios, Ordenes } = sequelize.models;
+const { Productos, Usuarios, Ordenes, Favoritos } = sequelize.models;
 
 Ordenes.belongsToMany(Usuarios, { through: 'orden_usuario' });
 Usuarios.belongsToMany(Ordenes, { through: 'orden_usuario' });
 
 Ordenes.belongsToMany(Productos, { through: 'orden_producto' });
 Productos.belongsToMany(Ordenes, { through: 'orden_producto' });
+
+Favoritos.belongsToMany(Productos, { through: 'favoritos_productos' });
+Productos.belongsToMany(Favoritos, { through: 'favoritos_productos' });
 
 module.exports = {
   ...sequelize.models,

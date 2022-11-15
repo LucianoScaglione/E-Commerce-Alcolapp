@@ -47,12 +47,14 @@ const Edit = ({ usuario }) => {
       <div className={style.row}>
       <div className={style.contenedorImagen2}><img src={vino} alt='profile' /></div>
       <div className={style.contenedorForm}>
+        <div className={style.margenForm}>
       <form className={style.form} onChange={handleChange}>
         <input type='text' name='nombre' value={input.nombre} placeholder='Editar nombre' /> 
         <input type='text' name='apellido' value={input.apellido} placeholder='Editar apellido' /> 
         <input type='phone' name='celular' value={input.celular} placeholder='Editar celular'/> 
         <input type='file' accept='image/png, image/jpeg' placeholder='Editar imagen' />
       </form>
+        </div>
         <button className={style.button} onClick={() => handleSubmit()}>Editar usuario</button>
       </div>
       </div>
@@ -60,4 +62,4 @@ const Edit = ({ usuario }) => {
   )
 }
 
-export default Edit; 
+export default Edit;

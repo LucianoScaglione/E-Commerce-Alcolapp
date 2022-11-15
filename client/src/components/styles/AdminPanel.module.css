@@ -22,7 +22,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* max-height: 200px; */
 }
 
 .aside p {
@@ -36,6 +35,22 @@
 
 .article {
     display: flex;
-    margin-left: 10px;
     padding: 0px 10px;
+    max-height: 464px;
+    width: 100%;
+    margin-bottom: 20px;
+    overflow-y:auto;
+}
+
+.linkUrl {
+    text-decoration: none;
+}
+
+.volver {
+   margin-left: 10px;
+   margin-top: 10px;
+   margin-bottom: 50px;
+   font-weight: 700;
+   color: gray;
+   display: inline-flex;
 }

@@ -73,3 +73,9 @@
   border-top: 1px solid rgba(128, 128, 128, 0.342);
   width: 430px;
 }
+
+.svg {
+  height: 25px;
+  cursor: pointer;
+  margin-top: 10px;
+}

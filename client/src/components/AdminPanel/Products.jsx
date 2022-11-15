@@ -92,7 +92,7 @@ const Products = () => {
                   <td className={style.td}>{producto.titulo}</td>
                   <td className={style.td}>{producto.cantidadDisponible}</td>
                   <td className={style.td}>{producto.cantidadVendida}</td>
-                  <td className={style.td}>{producto.idCategoria}</td>
+                  <td className={style.td}>{producto.categoria}</td>
                   <td className={style.td}>${producto.precio}</td>
                   <td className={style.td}><img className={style.svg} src={editar} alt='editar' title='Editar' onClick={() => handleClick(producto)} /><img className={style.svg} src={eliminar} alt='eliminar' title='Eliminar' onClick={() => borrarProducto(producto.id)}/></td>
                 </tr>

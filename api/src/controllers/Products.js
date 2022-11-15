@@ -21,7 +21,7 @@ const getInformation = async () => {
 
 const findAllProducts = async (req, res, next) => {
   try {
-    const { titulo } = req.query;
+    const { titulo, orden } = req.query;
     if (titulo) {
       const encontrarProductos = await Productos.findAll({
         where: {
@@ -31,6 +31,32 @@ const findAllProducts = async (req, res, next) => {
         }
       })
       encontrarProductos.length ? res.send(encontrarProductos) : res.status(404).send('No se encontraron productos');
+    }
+    if (orden === 'descendente') {
+      const productos = await Productos.findAll();
+      const ordenarProductos = productos.sort((a, b) => {
+        if(a.precio > b.precio) {
+          return 1
+        }
+        if (a.precio < b.precio) {
+          return -1
+        }
+        return 0
+      });
+      res.send(ordenarProductos);
+    }
+    if (orden === 'ascendente') {
+      const productos = await Productos.findAll();
+      const ordenarProductos = productos.sort((a, b) => {
+        if(a.precio > b.precio) {
+          return -1
+        }
+        if (a.precio < b.precio) {
+          return 1
+        }
+        return 0
+      });
+      res.send(ordenarProductos);
     }
     else {
     const cargarInformacion = await getInformation();

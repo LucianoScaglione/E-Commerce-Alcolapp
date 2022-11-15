@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Register from './components/Register';
 import UserPanel from './components/UserPanel/UserPanel';
+import Favorites from './components/Favorites';
 
 function App() {
   return (
@@ -19,9 +20,7 @@ function App() {
   <Route exact path='/cart' component={CartPage} />
   <Route exact path='/panel/admin/:id' component={AdminPanel} />
   <Route exact path='/panel/user/:id' component={UserPanel} />
-
-  
-
+  <Route exact path='/favorites' component={Favorites} />
   </CartProvider>  
   </div>
     )

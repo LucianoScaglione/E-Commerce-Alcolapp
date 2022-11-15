@@ -30,6 +30,7 @@
 .parrafoNombre {
     font-size: 15px;
     margin-right: 20px;
+    margin-left: 10px;
     color: white;
 }
 
@@ -37,14 +38,32 @@
     text-decoration: none;
 }
 
-.svg {
+.svgCarr {
     height: 25px;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    margin-right: 5px;
     padding: 2px;
     margin-right: 10px;
+}
+
+.svgFav {
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.svgBus {
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+    margin-right: 4px;
 }
 
 .contenedorNavbar input {

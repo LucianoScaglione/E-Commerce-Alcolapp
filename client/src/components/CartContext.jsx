@@ -1,5 +1,8 @@
+import axios from "axios";
+import { isAuthenticated } from './AuthService';
 import { createContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import swal from 'sweetalert';
 
 export const CartContext = createContext();
@@ -13,7 +16,7 @@ export const CartProvider = ({ children }) => {
       return [];
     };
   });
-
+  const usuario = isAuthenticated();
   const history = useHistory();
   
   const addItemToCart = (product) => {
@@ -79,13 +82,62 @@ const deleteAllCart = () => {
   setCartItems([]);
 }
 
+const sendMP = async () => {
+    const compra = cartItems.map(item => {
+      return {
+        id: item.id,
+        title: item.title,
+        description: item.titulo,
+        picture_url: item.miniatura,
+        category_id: item.idCategoria,
+        quantity: item.amount,
+        unit_price: item.precio,
+      };
+    });
+    const body = {
+      item: compra,
+      id_usuario: usuario.usuario.id,
+      productId: cartItems.map(e => e.id)
+    };
+    try {
+      const respuesta = await axios.post('http://localhost:3001/payments', body)
+        .then(res => { return res.data[0] })
+        .catch(error => console.log(error));
+      swal({
+        title: "¡Link de compra generado correctamente!",
+        icon: "success",
+        input: "text",
+        showCancelButton: true,
+        confirmButtonText: "Guardar",
+        cancelButtonText: "Cancelar",
+        buttons: {
+          confirm: { text: 'Ir al link' },
+          cancel: 'Cancelar'
+        }
+      })
+        .then((will) => {
+          if (will) {
+            window.location.href = respuesta;
+            setCartItems([]);
+          } else {
+            return swal("Cancelaste tu compra", {
+              icon: "error",
+            });;
+          };
+        });
+      return respuesta;
+    } catch (error) {
+      console.log(error);
+    }
+}
+
 useEffect(() => {
   localStorage.setItem('cartProducts', JSON.stringify(cartItems));
   console.log("cartItems: ", cartItems)
 }, [cartItems]);
 
 return (
-  <CartContext.Provider value={{ cartItems, addItemToCart, addItemToCart2, deleteItemToCart, deleteAllCart }}>
+  <CartContext.Provider value={{ cartItems, addItemToCart, addItemToCart2, deleteItemToCart, deleteAllCart , sendMP}}>
     { children }
   </CartContext.Provider>
  );

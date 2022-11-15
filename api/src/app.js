@@ -8,6 +8,7 @@ const productsRouter = require('./routes/Products');
 const usersRouter = require('./routes/Users');
 const paymentsRouter = require('./routes/Payments');
 const ordersRouter = require('./routes/Orders');
+const favoritesRouter = require('./routes/Favorites');
 ////////
 
 require('./db.js');
@@ -32,7 +33,8 @@ server.use('/products', productsRouter);
 server.use('/', usersRouter);
 server.use('/payments', paymentsRouter);
 server.use('/orders', ordersRouter);
-server.use('/users', usersRouter)
+server.use('/users', usersRouter);
+server.use('/favorites', favoritesRouter);
 
 server.use((err, req, res, next) => {
   const status = err.status || 500;

@@ -1,0 +1,74 @@
+.divContenedorCard {
+    display: inline-flex;
+    flex-wrap: wrap;
+    background-color: rgb(255 255 255);
+    border-radius: 0.5rem;
+    width: 250px;
+    height: 360px;
+    margin: 20px 10px;
+    padding: 16px;
+    overflow: hidden;
+}
+
+.divContenedorCard:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+.divCard {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.titulo {
+    font-size: 20px;
+    width: 250px;
+}
+
+.imagen {
+    margin-top: 10px;
+    margin-left: 24px;
+    width: 200px;
+    object-fit: contain;
+}
+
+.divPrecioYStock {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.precio {
+    font-weight: 600;
+}
+
+.stock {
+    font-weight: 500;
+    color: gray;
+}
+
+.svg {
+    height: 16px;
+    width: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    background-color: rgba(31, 41, 55, 0.884);
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.button:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}

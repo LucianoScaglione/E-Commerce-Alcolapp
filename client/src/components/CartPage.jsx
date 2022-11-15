@@ -1,13 +1,17 @@
 import { useContext, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { CartContext } from './CartContext';
 import style from './styles/CartPage.module.css';
 import mas from '../images/mas.svg'
 import menos from '../images/menos.svg'
+import swal from 'sweetalert';
+import { isAuthenticated } from './AuthService';
 
 const CartPage = () => {
+  const usuario = isAuthenticated();
+  const history = useHistory();
   const [productsLength, setProductsLength] = useState(0);
-  const { cartItems, addItemToCart, addItemToCart2, deleteItemToCart, deleteAllCart } = useContext(CartContext);
+  const { cartItems, addItemToCart2, deleteItemToCart, deleteAllCart, sendMP } = useContext(CartContext);
   const total = cartItems.reduce((previous, current) => previous + current.amount * current.precio, 0);
   useEffect(() => {
     setProductsLength(cartItems.reduce((previous, current) => previous + current.amount, 0));
@@ -47,7 +51,16 @@ const CartPage = () => {
       </div>
      }
      <p className={style.total}>Total: ${total},00</p>
-     <button className={style.comprar} disabled={total === 0}>Comprar</button>
+     <button className={style.comprar} 
+      onClick={async () => {
+      if (usuario.usuario) {
+        await sendMP()
+        } else {
+          swal("Debes iniciar sesión para poder comprar", {
+            icon: "warning",
+          });
+          history.push('/login');
+        }}} disabled={total === 0}>Comprar</button>
      </div>
     </div>
   )

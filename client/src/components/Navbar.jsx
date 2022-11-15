@@ -6,6 +6,7 @@ import UserContext from './UserContext';
 import style from './styles/Navbar.module.css';
 import lupa from '../images/lupa.svg';
 import carrito from '../images/carrito.svg';
+import favoritos from '../images/favoritos.svg';
 import { buscarProducto } from '../redux/actions';
 
 const Navbar = () => {
@@ -31,14 +32,17 @@ const Navbar = () => {
       <h1 className={style.nombrePagina}>Alcolapp</h1>
       </div>
       <div className={style.contenedorNavbar}>
-        <img className={style.svg} src={lupa} alt='Buscar' onClick={()=> buscar ? setBuscar(false) : setBuscar(true)} />
+        <img className={style.svgBus} src={lupa} alt='Buscar' onClick={()=> buscar ? setBuscar(false) : setBuscar(true)} title='Buscar' />
         {buscar && 
         <form onSubmit={handleSubmit}>
         <input type='text' value={input} placeholder='Buscar producto' onChange={handleChange} />
         </form>
         }
+        <Link to='/favorites'>
+        <img className={style.svgFav} src={favoritos} alt='Favorito' title='Favoritos' />
+        </Link>
         <Link to='/cart'>
-        <img className={style.svg} src={carrito} alt='Carrito' />
+        <img className={style.svgCarr} src={carrito} alt='Carrito' title='Carrito' />
         </Link>
         { usuario.token ? 
 				<>

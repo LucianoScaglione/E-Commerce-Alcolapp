@@ -6,6 +6,8 @@ import Home from './Home';
 import CartPage from '../CartPage';
 import style from '../styles/NavBarUser.module.css';
 import Edit from './Edit';
+import Favorites from '../Favorites';
+import Shopping from './Shopping';
 
 const UserPanel = () => {
   const [state, setState] = useState('home');
@@ -32,6 +34,8 @@ const UserPanel = () => {
       { state === 'home' && <Home usuario={usuario} /> } 
       { state === 'editar' && <Edit usuario={usuario} /> }
       { state === 'carrito' && <CartPage /> }
+      { state === 'favoritos' && <Favorites /> }
+      { state === 'compras' && <Shopping usuario={usuario} /> }
     </div>
     </>
   )
