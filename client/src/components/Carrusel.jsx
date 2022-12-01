@@ -1,43 +1,45 @@
-import { useState } from 'react'
-import style from './styles/Carrusel.module.css'
-import imagen1 from '../images/whisky.jpg'
-import imagen2 from '../images/gin.jpg'
-import imagen3 from '../images/vino.jpg'
-import imagen4 from '../images/cerveza.jpg'
-import flechaizquierda from '../images/flechaizquierda.svg';
-import flechaderecha from '../images/flechaderecha.svg';
+import { useState, useEffect } from 'react'
+import style from './styles/Carrusel.module.css';
+import flechaizquierda from '../images/svg/flechaizquierda.svg';
+import flechaderecha from '../images/svg/flechaderecha.svg';
 
-const Carrusel = () => {
-  const [imagenActual, setImagenActual] = useState(0)
-  const imagenes = [ imagen1, imagen2, imagen3,imagen4];
-  const cantidad = imagenes?.length
-  if (!Array.isArray(imagenes)) { return; }
-  const imagenPosterior = () => {
-    setImagenActual(imagenActual === cantidad - 1 ? 0 : imagenActual + 1)
-  }
+const Carrusel = ({ autoPlay }) => {
+  const imagenes = ['whisky.jpg', 'gin.jpg', 'vino.jpg', 'cerveza.jpg', 'whisky2.jpg', 'gin2.jpg', 'cerveza2.jpg', 'vino2.jpg'];
+  const [indexActual, setIndexActual] = useState(0);
+  const [imagenActual, setImagenActual] = useState(imagenes[0]);
+  const [loaded, setLoaded] = useState(false);
+  const seleccionarNuevaImagen = (indexActual, imagenes, siguiente = true) => {
+    setLoaded(false);
+    setTimeout(() => {
+      const condicion = siguiente ? indexActual < imagenes.length - 1 : indexActual > 0;
+      const siguienteIndice = siguiente ? condicion ? indexActual + 1 : 0 : condicion ? indexActual - 1 : imagenes.length - 1
+      setImagenActual(imagenes[siguienteIndice]);
+      setIndexActual(siguienteIndice);
+    }, 500);
+  };
   const imagenAnterior = () => {
-    setImagenActual(imagenActual === 0 ? cantidad - 1 : imagenActual - 1)
-  }
+    seleccionarNuevaImagen(indexActual, imagenes, false);
+  };
+  const imagenSiguiente = () => {
+    seleccionarNuevaImagen(indexActual, imagenes);
+  };
+  useEffect(() => {
+    if (autoPlay) {
+      const intervalo = setInterval(() => {
+        seleccionarNuevaImagen(indexActual, imagenes);
+      }, 2000);
+      return () => clearInterval(intervalo);
+    };
+  });
   return (
     <div>
-      { 
-        imagenes.length && imagenes.map((imagen, index) => {
-          return (
-            <div className={imagenActual === index ? `${style.slide} ${style.active}` : `${style.slide}` }>
-              {
-                imagenActual === index &&
-                <img className={style.imagenes} key={index} src={imagen} alt='imagen' />
-              }
-            </div>
-          )
-        })
-      }
+      <img className={loaded ? style.loaded : style.imagenes} src={require(`../images/${imagenActual}`)} alt='Error al cargar imagen' onLoad={() => setLoaded(true)} />
       <div className={style.contenedor}>
-      <button onClick={imagenPosterior}><img src={flechaizquierda} alt='Siguiente' /></button>
-      <button onClick={imagenAnterior}><img src={flechaderecha} alt='Anterior' /></button>
+        <button onClick={imagenAnterior}><img src={flechaizquierda} alt='Siguiente' /></button>
+        <button onClick={imagenSiguiente}><img src={flechaderecha} alt='Anterior' /></button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Carrusel;

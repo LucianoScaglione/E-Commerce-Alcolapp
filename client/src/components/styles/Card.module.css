@@ -1,74 +1,123 @@
-.divContenedorCard {
-    display: inline-flex;
-    flex-wrap: wrap;
-    background-color: rgb(255 255 255);
-    border-radius: 0.5rem;
-    width: 250px;
-    height: 360px;
-    margin: 20px 10px;
-    padding: 16px;
-    overflow: hidden;
+.contenedorComponente {
+    display: flex;
 }
 
-.divContenedorCard:hover {
+.contenedorFiltros {
+    width: 25%;
+    margin-top: 25px;
+}
+
+.filtros {
+    display: flex;
+    justify-content: center;
+}
+
+.contenedorPadre {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px 0px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/*Si hay filtro*/
+.contenedorCartaConFiltros {
+    display: flex;
+    min-width: 30%;
+    min-height: 325px;
+    max-width: 30%;
+    max-height: 325px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+/*Si no hay filtro*/
+.contenedorCarta {
+    display: flex;
+    margin: auto;
+    min-width: 23%;
+    max-width: 23%;
+    min-height: 325px;
+    max-height: 325px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.contenedorCarta:hover {
     cursor: pointer;
     transform: scale(1.03);
 }
 
-.divCard {
+.carta {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     overflow: hidden;
     white-space: nowrap;
+    padding: 10px 0px;
+    max-width: 90%;
+    margin: 0px auto;
 }
 
-.titulo {
+.carta h1 {
     font-size: 20px;
-    width: 250px;
 }
 
-.imagen {
-    margin-top: 10px;
-    margin-left: 24px;
-    width: 200px;
-    object-fit: contain;
+.carta img {
+    min-width: 150px;
+    min-height: 150px;
+    max-width: 150px;
+    max-height: 150px;
 }
 
-.divPrecioYStock {
-    margin-top: 10px;
+.divImagen {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.precioYSvg {
+    position: relative;
+    top: 10px;
+    width: 100%;
     display: flex;
     justify-content: space-between;
+}
+
+.precioYSvg svg {
+    height: 16px;
+    width: 16px;
 }
 
 .precio {
     font-weight: 600;
 }
 
-.stock {
-    font-weight: 500;
+.estado {
+    font-weight: 600;
     color: gray;
 }
 
-.svg {
-    height: 16px;
-    width: 16px;
-    justify-content: center;
-    align-items: center;
+.divBoton {
+    display: flex;
+    margin-top: 10px;
+    width: 100%;
 }
 
-.button {
-    display: flex;
-    background-color: rgba(31, 41, 55, 0.884);
-    border: none;
-    color: white;
+.divBoton button {
+    width: 100%;
+    height: 30px;
     font-size: 15px;
     font-weight: 700;
-    justify-content: center;
-    align-items: center;
-    width: 250px;
-    height: 25px;
+    border: none;
+    color: white;
+    background-color: orange;
     cursor: pointer;
 }
 
-.button:hover {
+.divBoton button:hover {
     cursor: pointer;
-    transform: scale(1.03);
+    transform: scale(1.01);
 }

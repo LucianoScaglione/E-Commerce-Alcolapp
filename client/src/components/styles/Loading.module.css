@@ -1,13 +1,8 @@
 .container {
-    height: 100vh;
-    background-size: 100%;
-    background-position: center;
+    height: 80vh;
     position: absolute;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
+    width: 100%; 
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -17,9 +12,8 @@
 }
 
 .span {
-    font-size: 20px;
-    line-height: 36px;
-    margin-right: 16px;
+    font-size: 30px;
+    margin-right: 12px;
 }
 
 .svg {

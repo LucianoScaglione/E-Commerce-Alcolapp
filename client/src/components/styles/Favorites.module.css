@@ -1,115 +1,120 @@
 .linkUrl {
-    text-decoration: none;
-  }
-  
-  .volver {
-    margin-left: 10px;
-    margin-top: 10px;
-    font-weight: 700;
-    color: rgb(75, 64, 64);
-    display: inline-flex;
-  }
-  
-  .divContenedor {
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    padding-left: 50px;
-  }
-  
-  .h1 {
-    margin-left: 50px;
-    margin-top: 10px;
-    margin-bottom: 40px;
-  }
-  
-  .divContenedorCard { 
-    width: 350px; 
-    height: 400px;
-    margin-bottom: 70px;
-  }
-  
-  .divContenedorCard:hover {
-    cursor: pointer;
-    transform: scale(1.01);
-  }
-  
-  .card {
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  
-  .precio {
-    font-weight: 600;
-  }
-  
-  .divPrecioYStock {
-    margin-top: 10px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .titulo {
-    font-size: 20px;
-    width: 250px;
-  }
-  
-  .imagen {
-    justify-content: center;
-    margin-top: 10px;
-    margin-left: 45px;
-    width: 250px;
-    height: 250px;
-    object-fit: contain;
-  }
-  
-  .stock {
-    font-weight: 500;
-    color: gray;
-  }
-  
-  .svg {
-    height: 16px;
-    width: 16px;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .button {
-    display: flex;
-    background-color: rgba(31, 41, 55, 0.884);
-    border: none;
-    color: white;
-    font-size: 17px;
-    font-weight: 700;
-    justify-content: center;
-    align-items: center;
-    width: 350px;
-    height: 35px;
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    cursor: pointer;
-    transform: scale(1.03);
-  }
-  
-  .divBorrar {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  .divBorrar button {
-    background-color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .divBorrar button:hover {
-    background-color: red;
-  }
-  
-  .svgTacho {
-    height: 20px;
-    width: 16px;
-  }
+  text-decoration: none;
+}
+
+.volver {
+  margin-left: 10px;
+  margin-top: 10px;
+  font-weight: 700;
+  color: rgb(75, 64, 64);
+  display: inline-flex;
+}
+
+.divContenedor {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding-left: 50px;
+}
+
+.h1 {
+  margin-left: 50px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.divContenedorCard { 
+  width: 350px; 
+  height: 400px;
+  margin-bottom: 70px;
+}
+
+.divContenedorCard:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+}
+
+.card {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.precio {
+  font-weight: 600;
+}
+
+.divPrecioYStock {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titulo {
+  font-size: 20px;
+  width: 250px;
+}
+
+.imagen {
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 45px;
+  width: 250px;
+  height: 250px;
+  object-fit: contain;
+}
+
+.stock {
+  font-weight: 500;
+  color: gray;
+}
+
+.svg {
+  height: 16px;
+  width: 16px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  display: flex;
+  background-color: rgba(31, 41, 55, 0.884);
+  border: none;
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  justify-content: center;
+  align-items: center;
+  width: 350px;
+  height: 35px;
+  cursor: pointer;
+}
+
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.divBorrar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.divBorrar button {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.divBorrar button:hover {
+  background-color: red;
+}
+
+.svgTacho {
+  height: 20px;
+  width: 16px;
+}
+
+.sinFavoritos {
+  display: flex;
+  margin-left: 75px;
+}

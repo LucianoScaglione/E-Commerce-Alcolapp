@@ -4,11 +4,6 @@ module.exports = (sequelize) => {
   sequelize.define(
     "Ordenes",
     {
-      id: {
-        type: DataTypes.STRING,
-        primaryKey: true,
-        allowNull: false
-      },
       idUsuario: {
         type: DataTypes.INTEGER
       },

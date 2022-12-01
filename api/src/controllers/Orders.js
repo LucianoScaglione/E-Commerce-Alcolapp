@@ -2,9 +2,14 @@ const { Ordenes, Usuarios, Productos } = require('../db');
 
 const findAllOrder = async (req, res, next) => {
   try {
-    // const ordenesTotales = await Ordenes.findAll({ include: { model: Usuarios, attributes: ['id', 'nombre', 'apellido', 'imagen', 'email', 'celular'] }});
-    const ordenesTotales = await Ordenes.findAll({ include: { all: true } });
-    ordenesTotales.length ? res.send(ordenesTotales) : res.status(404).send("No existen órdenes registradas");
+    const { id } = req.query;
+    if (id) {
+      const orden = await Ordenes.findOne({ where: { id }, include: { all: true } });
+      orden ? res.send(orden) : res.status(404).send("No existen órdenes con ese id");
+    } else {
+      const ordenesTotales = await Ordenes.findAll({ include: { all: true } });
+      ordenesTotales.length ? res.send(ordenesTotales) : res.status(404).send("No existen órdenes registradas");
+    };
   } catch (error) {
     next(error);
   };
@@ -13,7 +18,7 @@ const findAllOrder = async (req, res, next) => {
 const findOneOrder = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const contenedor = await Ordenes.findOne({ where: { id }, include: { all: true } })
+    const contenedor = await Ordenes.findOne({ where: { id }, include: { all: true } });
     contenedor ? res.send(contenedor) : res.status(404).send("Orden no encontrada");
   } catch (error) {
     next(error);
@@ -23,7 +28,6 @@ const findOneOrder = async (req, res, next) => {
 const findAllOrderUser = async (req, res, next) => {
   try {
     const { id } = req.params;
-    console.log("id", id)
     const ordenes = await Ordenes.findAll({ where: { idUsuario: id }, include: Productos });
     ordenes.length ? res.send(ordenes) : res.status(404).send("El usuario no tiene órdenes realizadas");
   } catch (error) {
@@ -33,17 +37,15 @@ const findAllOrderUser = async (req, res, next) => {
 
 const createOrder = async (req, res, next) => {
   try {
-    console.log("le llega a ordenes: ", req.body)
     const usuario = await Usuarios.findByPk(req.body.id_usuario);
     const crearOrden = await Ordenes.create({
-      id: req.body.id,
       idUsuario: req.body.id_usuario,
       estado: req.body.estado,
       fecha: req.body.fecha,
       precio_orden: req.body.precio_orden,
-    })
-    req.body.productId.map(async e => { await crearOrden.addProductos(e) })
-    await crearOrden.addUsuarios(usuario)
+    });
+    req.body.productId.map(async e => { await crearOrden.addProductos(e) });
+    await crearOrden.addUsuarios(usuario);
     res.send(crearOrden);
   } catch (error) {
     next(error);
@@ -54,7 +56,6 @@ const updateOrder = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { estado } = req.body;
-    console.log("llega ", req.body)
     const orden = await Ordenes.findOne({ where: { id } });
     if (orden) {
       await orden.update({ estado });
@@ -74,8 +75,8 @@ const deleteOrder = async (req, res, next) => {
     res.send({ destroy: true });
   } catch (error) {
     next(error);
-  }
-}
+  };
+};
 
 module.exports = {
   findAllOrder,
@@ -84,4 +85,4 @@ module.exports = {
   createOrder,
   updateOrder,
   deleteOrder
-}
+};

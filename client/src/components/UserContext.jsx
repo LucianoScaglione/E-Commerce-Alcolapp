@@ -6,26 +6,25 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
 
-    const [usuarioActual, setUsuarioActual] = useState(undefined);
+  const [usuarioActual, setUsuarioActual] = useState(undefined);
 
-    useEffect(() => {
-        const verificarLogueado = async () => {
-            let cuser = isAuthenticated();
-						console.log("userContext cuser: ", cuser)
-            if (cuser === null) {
-                localStorage.setItem('user', '');
-                cuser = '';
-            }
-            setUsuarioActual(cuser);
-        };
-        verificarLogueado();
-    }, []);
+  useEffect(() => {
+    const verificarLogueado = async () => {
+      let cuser = isAuthenticated();
+      if (cuser === null) {
+        localStorage.setItem('user', '');
+        cuser = '';
+      };
+      setUsuarioActual(cuser);
+    };
+    verificarLogueado();
+  }, []);
 
-    return (
-        <UserContext.Provider value={[usuarioActual, setUsuarioActual]}>
-            {usuarioActual?.token ? children : <Login />}
-        </UserContext.Provider>
-    );
+  return (
+    <UserContext.Provider value={[usuarioActual, setUsuarioActual]}>
+      {usuarioActual?.token ? children : <Login />}
+    </UserContext.Provider>
+  );
 };
 
 

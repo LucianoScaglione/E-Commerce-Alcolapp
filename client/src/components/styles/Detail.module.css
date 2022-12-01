@@ -19,6 +19,7 @@
 
 .contenedorImagen { 
   display: flex;
+  position: relative;
   justify-content: space-between;
 }
 
@@ -41,15 +42,11 @@
 }
 
 .contenedorParrafos {
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
   border-bottom: 1px solid rgba(128, 128, 128, 0.342);
   border-top: 1px solid rgba(128, 128, 128, 0.342);
   width: 430px;
-}
-
-.contenedorParrafos p {
-  margin-right: 10px;
 }
 
 .button {
@@ -75,7 +72,60 @@
 }
 
 .svg {
+  position: absolute;
+  top: 2%;
+  left: 2%;
   height: 25px;
   cursor: pointer;
-  margin-top: 10px;
+}
+
+.contenedorComentarios {
+  display: flex;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+
+.contenedorComentarios img {
+  height: 60px;
+  width: 60px;
+  border-radius: 999px;
+}
+
+.contenedorImagenUsuario {
+  display: flex;
+  margin-right: 10px;
+  margin-top: 4px;
+}
+
+.contenedorNombreApellido {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 25px;
+}
+
+.contenedorNombreApellido p {
+  margin-right: 5px;
+  font-weight: 700;
+}
+
+.contenedorrr {
+  display: flex;
+  flex-direction: column;
+  height: 0px;
+  width: 100%;
+}
+
+.tituloComentario {
+  display: flex;
+  padding-left: 20px;
+}
+
+.tituloComentario h3 {
+  font-size: 25px;
+}
+
+.sinComentarios {
+  margin-left: 20px;
+  font-size: 20px;
 }

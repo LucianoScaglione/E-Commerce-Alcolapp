@@ -2,7 +2,6 @@ import axios from "axios";
 import { isAuthenticated } from './AuthService';
 import { createContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-
 import swal from 'sweetalert';
 
 export const CartContext = createContext();
@@ -18,7 +17,6 @@ export const CartProvider = ({ children }) => {
   });
   const usuario = isAuthenticated();
   const history = useHistory();
-  
   const addItemToCart = (product) => {
     const inCart = cartItems.find((productInCart) => productInCart.id === product.id);
     if (inCart) {
@@ -28,65 +26,81 @@ export const CartProvider = ({ children }) => {
         } else return productInCart;
       }));
     } else {
-    setCartItems([...cartItems, { ...product, amount: 1 }]);
-  };
-  swal({
-    title: "Producto agregado al carrito",
-    input: "text",
-    showCancelButton: true,
-    confirmButtonText: "Guardar",
-    cancelButtonText: "Cancelar",
-    buttons: {
-      confirm: { text: 'Ir al carrito' },
-      cancel: 'Seguir comprando'
-    }
-  })
-    .then((will) => {
-      if (will) {
-        history.push('/cart')
-      } else {
-        return null
+      setCartItems([...cartItems, { ...product, amount: 1 }]);
+    };
+    swal({
+      title: "Producto agregado al carrito",
+      input: "text",
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      cancelButtonText: "Cancelar",
+      buttons: {
+        confirm: { text: 'Ir al carrito' },
+        cancel: 'Seguir comprando'
       }
-    });
- };
+    })
+      .then((will) => {
+        if (will) {
+          history.push('/cart')
+        } else {
+          return null
+        };
+      });
+  };
 
- const addItemToCart2 = (product) => {
-  const inCart = cartItems.find((productInCart) => productInCart.id === product.id);
-  if (inCart) {
-    setCartItems(cartItems.map((productInCart) => {
-      if (productInCart.id === product.id) {
-        return { ...inCart, amount: inCart.amount + 1 };
-      } else return productInCart;
-    }));
-  } else {
-  setCartItems([...cartItems, { ...product, amount: 1 }]);
- };
-};
-
- const deleteItemToCart = (product) => {
-  const inCart = cartItems.find((productInCart) => productInCart.id === product.id);
-  console.log("inCart deleteitemtocart", inCart)
-  if (inCart.amount === 1) {
-    return setCartItems(cartItems.filter((productInCart) => productInCart.id !== product.id));
-  } else {
-    setCartItems(cartItems.map((productInCart) => {
+  const addItemToCart2 = (product) => {
+    const inCart = cartItems.find((productInCart) => productInCart.id === product.id);
+    if (inCart) {
+      setCartItems(cartItems.map((productInCart) => {
+        if (productInCart.id === product.id && inCart.amount < product.cantidadDisponible) {
+          return { ...inCart, amount: inCart.amount + 1 };
+        } else return productInCart;
+      }));
+    } else {
+      setCartItems([...cartItems, { ...product, amount: 1 }]);
+    };
+  };
+  const deleteItemToCart = (product) => {
+    const inCart = cartItems.find((productInCart) => productInCart.id === product.id);
+    if (inCart.amount === 1) {
+      return setCartItems(cartItems.filter((productInCart) => productInCart.id !== product.id));
+    } else {
+      setCartItems(cartItems.map((productInCart) => {
         if (productInCart.id === product.id) {
           return { ...inCart, amount: inCart.amount - 1 };
         } else return productInCart;
       })
-    );
+      );
+    };
+  };
+  const removeProductsCart = (product) => {
+    const inCart = cartItems.find((productInCart) => productInCart.id === product.id);
+    swal({
+      title: "¿Desea sacar este producto del carrito?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Guardar",
+      cancelButtonText: "Cancelar",
+      buttons: {
+        confirm: { text: 'Eliminar' },
+        cancel: 'Cancelar'
+      }
+    })
+      .then((will) => {
+        if (will) {
+          if (inCart) {
+            return setCartItems(cartItems.filter((productInCart) => productInCart.id !== product.id));
+          };
+        } else {
+          return null;
+        };
+      });
   }
-};
-
-const deleteAllCart = () => {
-  setCartItems([]);
-}
-
-const sendMP = async () => {
+  const sendMP = async () => {
     const compra = cartItems.map(item => {
       return {
         id: item.id,
-        title: item.title,
+        title: item.titulo,
         description: item.titulo,
         picture_url: item.miniatura,
         category_id: item.idCategoria,
@@ -111,34 +125,30 @@ const sendMP = async () => {
         confirmButtonText: "Guardar",
         cancelButtonText: "Cancelar",
         buttons: {
-          confirm: { text: 'Ir al link' },
-          cancel: 'Cancelar'
+          confirm: { text: 'Ir al link' }
         }
       })
         .then((will) => {
           if (will) {
+            cartItems.map(async (e) => {
+              return await axios.put(`http://localhost:3001/products/shoppingcart/${e.id}`, { cantidadDisponible: e.amount, cantidadVendida: e.amount });
+            });
             window.location.href = respuesta;
             setCartItems([]);
-          } else {
-            return swal("Cancelaste tu compra", {
-              icon: "error",
-            });;
           };
         });
       return respuesta;
     } catch (error) {
       console.log(error);
-    }
-}
+    };
+  };
+  useEffect(() => {
+    localStorage.setItem('cartProducts', JSON.stringify(cartItems));
+  }, [cartItems]);
 
-useEffect(() => {
-  localStorage.setItem('cartProducts', JSON.stringify(cartItems));
-  console.log("cartItems: ", cartItems)
-}, [cartItems]);
-
-return (
-  <CartContext.Provider value={{ cartItems, addItemToCart, addItemToCart2, deleteItemToCart, deleteAllCart , sendMP}}>
-    { children }
-  </CartContext.Provider>
- );
+  return (
+    <CartContext.Provider value={{ cartItems, addItemToCart, addItemToCart2, deleteItemToCart, removeProductsCart, sendMP }}>
+      {children}
+    </CartContext.Provider>
+  );
 };

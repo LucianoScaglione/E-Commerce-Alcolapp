@@ -4,7 +4,9 @@
     justify-content: space-between;
     width: 100%;
     height: 80px;
-    background-color: rgb(55 65 81);
+    background: #fe8c00;  
+    background: -webkit-linear-gradient(to right, #f83600, #fe8c00);  
+    background: linear-gradient(to right, #f83600, #fe8c00); 
     align-items: center;
 }
 
@@ -66,6 +68,16 @@
     margin-right: 4px;
 }
 
+.svgPan {
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 2px;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
 .contenedorNavbar input {
     height: 20px;
     width: 200px;
@@ -75,4 +87,4 @@
 
 .linkUrl {
     text-decoration: none;
-  }
+}

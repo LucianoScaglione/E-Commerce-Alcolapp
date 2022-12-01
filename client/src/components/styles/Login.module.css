@@ -1,12 +1,13 @@
 .contenedor {
-    background-image: url('../../images/amarillo.jpg');
     height: 100vh;
-    background-position: center;
-    overflow: scroll;
-    overflow-x: hidden; 
-    background-size: 100%;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    /* background: #bdc3c7;  
+    background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7); 
+    background: linear-gradient(to right, #2c3e50, #bdc3c7);  */
+    background: #1F1C2C;  
+    background: -webkit-linear-gradient(to right, #928DAB, #1F1C2C);  
+    background: linear-gradient(to right, #928DAB, #1F1C2C); 
+
+
 }
 
 .card {
@@ -16,8 +17,9 @@
 }
 
 .contenedorCard {
-    background-image: url('../../images/fondoLogin.jpg');
-    background-position: center;
+    background: #FF8008; 
+    background: -webkit-linear-gradient(to right, #FFC837, #FF8008);  
+    background: linear-gradient(to right, #FFC837, #FF8008); 
     width: 30%;
     height: 370px;
     justify-content: center;
@@ -77,13 +79,13 @@
 .cardRegister {
     display: flex;
     justify-content: center;
-    /* margin-top: 20px; */
 }
 
 .contenedorCardRegister {
     display: flex;
-    background-image: url('../../images/fondoLogin.jpg');
-    background-position: center;
+    background: #FF8008; 
+    background: -webkit-linear-gradient(to right, #FFC837, #FF8008);  
+    background: linear-gradient(to right, #FFC837, #FF8008); 
     width: 30%;
     justify-content: center;
     border-radius: 10px;
@@ -106,10 +108,6 @@
    margin-left: 10px;
    margin-top: 10px;
    font-weight: 700;
-   color: gray;
+   color: white;
    display: inline-flex;
-}
-
-.volver:hover {
-    color: white;
 }

@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const router = Router();
-const { findFavorite, createFavorite, deleteFavorite } = require('../controllers/Favorites');
+const { findFavorite, findOneFavorite, createFavorite, deleteFavorite } = require('../controllers/Favorites');
 
 router.get('/:id', findFavorite);
+router.get('/:id/:productoId', findOneFavorite);
 router.post('/', createFavorite);
 router.delete('/:id', deleteFavorite);
 

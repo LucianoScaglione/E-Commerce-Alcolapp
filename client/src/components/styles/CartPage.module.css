@@ -24,8 +24,17 @@
 
 .imagenTitulo {
     display: flex;
+    position: relative;
     flex-direction: row;
     justify-content: flex-start;
+}
+
+.botonEliminar {
+    position: absolute;
+    right: 0;
+    border: none;
+    background-color: white;
+    cursor: pointer;
 }
 
 .imagenTitulo img {
@@ -50,9 +59,7 @@
     font-weight: 700;
     font-size: 20px;
     width: 40px;
-    /*Esto es para sacarle los bordes a los botones*/
     border: 0px solid white;
-
     margin: 0px 5px;
     cursor: pointer;
     background-color: white;

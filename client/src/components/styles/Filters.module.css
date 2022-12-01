@@ -27,6 +27,21 @@
     cursor: pointer;
 }
 
+.buttonTodos {
+    display: flex;
+    align-items: center;
+    width: 225px;
+    height: 50px;
+    font-size: 17px;
+    background-color: rgba(229 231 235);
+    border: 1px solid rgba(0, 0, 0, 0.301);
+    color: rgba(0, 0, 0, 0.61);
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
 .divRangoPrecio {
     display: flex;
     margin-top: 30px;
