@@ -1,5 +1,5 @@
 import swal from "sweetalert";
-import { OBTENER_PRODUCTOS, OBTENER_DETALLE_PRODUCTO, BUSCAR_PRODUCTO, OBTENER_USUARIOS, BUSCAR_USUARIO, OBTENER_ORDENES, DETALLE_ORDEN, FILTRAR_PRECIO, VARIOS_FILTROS, ORDENES_USUARIO, FILTROS_PANEL, BUSCAR_USUARIOS, BUSCAR_PRODUCTO_ID, OBTENER_ORDEN_ID, COMENTARIOS_PRODUCTO, VACIAR_ESTADOS, FILTROS_ORDENES_PANEL, PRODUCTOS_DESTACADOS, OBTENER_PRODUCTOS_PANEL, ELIMINAR_USUARIO, ELIMINAR_ORDEN, ELIMINAR_PRODUCTO, FAVORITOS_USUARIO, ELIMINAR_FAVORITO, PRODUCTO_FAVORITO } from "./actions";
+import { OBTENER_PRODUCTOS, OBTENER_DETALLE_PRODUCTO, BUSCAR_PRODUCTO, OBTENER_USUARIOS, BUSCAR_USUARIO, OBTENER_ORDENES, DETALLE_ORDEN, FILTRAR_PRECIO, VARIOS_FILTROS, ORDENES_USUARIO, FILTROS_PANEL, BUSCAR_USUARIOS, BUSCAR_PRODUCTO_ID, OBTENER_ORDEN_ID, COMENTARIOS_PRODUCTO, VACIAR_ESTADOS, FILTROS_ORDENES_PANEL, PRODUCTOS_DESTACADOS, OBTENER_PRODUCTOS_PANEL, ELIMINAR_USUARIO, ELIMINAR_ORDEN, ELIMINAR_PRODUCTO, FAVORITOS_USUARIO, ELIMINAR_FAVORITO, PRODUCTO_FAVORITO, COMENTARIOS_USUARIO, VACIAR_ESTADO_COMENTARIOS_USUARIO, ELIMINAR_PRODUCTOS_CATEGORIA } from "./actions";
 
 const initialState = {
   productos: [],
@@ -12,6 +12,7 @@ const initialState = {
   ordenes: [],
   orden: [],
   ordenUsuario: [],
+  comentariosUsuario: [],
   comentarios: [],
   productosDestacados: [],
   productosPanel: [],
@@ -203,7 +204,8 @@ const reducer = (state = initialState, { type, payload }) => {
       const contenedor = state.productosPanel.filter(e => e.id !== payload);
       return {
         ...state,
-        productosPanel: contenedor
+        productosPanel: contenedor,
+        productos: contenedor
       }
     }
     case FAVORITOS_USUARIO: {
@@ -223,6 +225,26 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         favorito: payload
+      }
+    }
+    case COMENTARIOS_USUARIO: {
+      return {
+        ...state,
+        comentariosUsuario: payload
+      }
+    }
+    case VACIAR_ESTADO_COMENTARIOS_USUARIO: {
+      return {
+        ...state,
+        comentariosUsuario: []
+      }
+    }
+    case ELIMINAR_PRODUCTOS_CATEGORIA: {
+      const contenedor = state.productos.filter(e => e.idCategoria !== payload)
+      return {
+        ...state,
+        productos: contenedor,
+        productosPanel: contenedor
       }
     }
     default: return state;

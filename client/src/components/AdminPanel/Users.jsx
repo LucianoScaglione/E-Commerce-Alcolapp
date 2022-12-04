@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { obtenerUsuarios, eliminarUsuario, buscarUsuario, actualizarUsuario, buscarUsuariosPorNombre } from '../../redux/actions';
+import { isAuthenticated } from '../AuthService';
 import style from '../styles/PanelGeneral.module.css';
 import editar from '../../images/svg/editar.svg';
 import eliminar from '../../images/svg/eliminar.svg';
@@ -9,6 +10,7 @@ import Modal from '../Modal';
 import spinner from '../../images/svg/spinner.svg';
 
 const Users = () => {
+  const adminLogueado = isAuthenticated();
   const dispatch = useDispatch();
   const usuarios = useSelector(state => state.usuarios);
   const usuario = useSelector(state => state.usuario);
@@ -19,6 +21,7 @@ const Users = () => {
     apellido: '',
     email: '',
     celular: '',
+    is_admin: false
   });
   const [loader, setLoader] = useState(true);
   const borrarUsuario = (id) => {
@@ -72,7 +75,8 @@ const Users = () => {
         nombre: usuario.nombre,
         apellido: usuario.apellido,
         email: usuario.email,
-        celular: usuario.celular
+        celular: usuario.celular,
+        is_admin: usuario.is_admin
       });
     };
   }, [usuario]);
@@ -133,6 +137,16 @@ const Users = () => {
                 <input type='email' name='email' defaultValue={input.email} placeholder='Editar el email' />
                 <label>Celular</label>
                 <input type='number' name='celular' defaultValue={input.celular} placeholder='Editar el celular' />
+                {adminLogueado.usuario.id === 1 &&
+                  <>
+                    <label>Admin</label>
+                    <select name='is_admin'>
+                      <option hidden>{usuario.is_admin && usuario.is_admin.toString()}</option>
+                      <option value={false}>false</option>
+                      <option value={true}>true</option>
+                    </select>
+                  </>
+                }
               </form>
             </Modal>
           </div>

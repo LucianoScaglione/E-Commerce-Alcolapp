@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import style from '../styles/AdminPanel.module.css';
+import Categories from './Categories';
 import Orders from './Orders';
 import Products from './Products';
 import Users from './Users';
@@ -18,11 +19,13 @@ const AdminPanel = () => {
           <p className={valor === 'usuarios' ? style.pMarcado : undefined} onClick={() => setValor('usuarios')}>Usuarios</p>
           <p className={valor === 'productos' ? style.pMarcado : undefined} onClick={() => setValor('productos')}>Productos</p>
           <p className={valor === 'ordenes' ? style.pMarcado : undefined} onClick={() => setValor('ordenes')}>Órdenes</p>
+          <p className={valor === 'categorias' ? style.pMarcado : undefined} onClick={() => setValor('categorias')}>Categorías</p>
         </aside>
         <article className={style.article}>
           {valor === 'usuarios' && <Users />}
           {valor === 'productos' && <Products />}
           {valor === 'ordenes' && <Orders />}
+          {valor === 'categorias' && <Categories />}
         </article>
       </div>
     </div>

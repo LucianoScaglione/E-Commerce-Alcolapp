@@ -27,7 +27,7 @@ const deleteCategory = async (req, res, next) => {
   };
 };
 
-// module.exports = {
+module.exports = {
   // updateCategory,
-  // deleteCategory
-// };
+  deleteCategory
+};

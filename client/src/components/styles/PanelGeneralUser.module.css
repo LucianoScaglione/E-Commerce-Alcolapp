@@ -117,7 +117,6 @@
   flex-direction: column;
   align-items: center;
   width: 850px;
-  padding-left: 50px;
   background-color: rgba(128, 128, 128, 0.144);
 }
 
@@ -164,23 +163,6 @@
   color: black;
 }
 
-.divComentario {
-  display: flex;
-  margin-right: 48px;
-}
-
-.textarea {
-  height: 50px;
-  width: 100vh;
-  display: flex;
-  /* margin-right: 48px; */
-  font-size: 20px;
-  background-color: white;
-  resize: none;
-  border: none;
-  border-radius: 5px;
-}
-
 .divProductosPrincipal {
   display: flex;
   justify-content: center;
@@ -191,13 +173,27 @@
 .sinOrdenes {
   display: flex;
   justify-content: center;
-  
 }
+
 .sinOrdenes p {
   font-size: 30px;
   font-weight: 550;
 }
 
+.divComentario {
+  display: flex;
+}
+
+.textarea {
+  height: 50px;
+  width: 100vh;
+  display: flex;
+  font-size: 20px;
+  background-color: white;
+  resize: none;
+  border: none;
+  border-radius: 5px;
+}
 .contenedorComentarioPrincipal {
   display: flex;
   flex-direction: column;
@@ -212,7 +208,7 @@
   color: black;
   font-size: 15px;
   font-weight: 600;
-  background-color: none;
+  background-color: transparent;
   border: none;
   margin-bottom: 20px;
   cursor: pointer;

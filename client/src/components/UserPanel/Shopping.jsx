@@ -2,23 +2,40 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
-import { buscarOrdenesUsuario, crearComentario } from "../../redux/actions";
+import { buscarOrdenesUsuario, crearComentario, comentariosDeUsuario, vaciarComentariosDeUsuario } from "../../redux/actions";
 import style from '../styles/PanelGeneralUser.module.css';
+import swal from "sweetalert";
 
 const Shopping = ({ usuario }) => {
   const ordenUsuario = useSelector(state => state.ordenUsuario);
+  const comentariosUsuario = useSelector(state => state.comentariosUsuario);
+  const [comento, setComento] = useState(false);
   const dispatch = useDispatch();
   const [comentario, setComentario] = useState('');
   const handleChange = (e) => {
     setComentario(e.target.value);
   };
   const handleSubmit = (id) => {
-    dispatch(crearComentario({ descripcion: comentario, id: id, UsuarioId: usuario.id }));
-    setComentario('');
+    const buscarComentarios = comentariosUsuario.find(e => e.ProductoId === id)
+    if (!buscarComentarios) {
+      dispatch(crearComentario({ descripcion: comentario, id: id, usuarioId: usuario.id }));
+      setComentario('');
+      setComento(id)
+    } else {
+      swal("Error", "Sólo puedes dejar un comentario por producto", "error");
+      setComentario('');
+    }
   };
   useEffect(() => {
     dispatch(buscarOrdenesUsuario(usuario.id));
+    return () => {
+      dispatch(vaciarComentariosDeUsuario());
+    };
   }, [dispatch]);
+
+  useEffect(() => {
+    !comentariosUsuario.length && dispatch(comentariosDeUsuario(usuario.id));
+  }, [dispatch, comentariosUsuario, comento]);
   return (
     <div>
       <Link className={style.linkUrl} to='/'>
@@ -48,7 +65,7 @@ const Shopping = ({ usuario }) => {
                           <p>${e.precio}</p>
                         </div>
                         <div className={style.divComentario}>
-                          {orden.estado === 'finalizada' &&
+                          {orden.estado === 'finalizada' && (!comentariosUsuario.find(el => el.ProductoId === e.id) && !(comento === e.id)) &&
                             <div className={style.contenedorComentarioPrincipal}>
                               <textarea className={style.textarea} placeholder='Deja tu comentario...' maxLength={140} onChange={handleChange} />
                               <div className={style.contenedorComentario}>

@@ -26,6 +26,9 @@ export const ELIMINAR_PRODUCTO = "ELIMINAR_PRODUCTO";
 export const FAVORITOS_USUARIO = "FAVORITOS_USUARIO";
 export const ELIMINAR_FAVORITO = "ELIMINAR_FAVORITO";
 export const PRODUCTO_FAVORITO = "PRODUCTO_FAVORITO";
+export const COMENTARIOS_USUARIO = "COMENTARIOS_USUARIO";
+export const VACIAR_ESTADO_COMENTARIOS_USUARIO = "VACIAR_ESTADO_COMENTARIOS_USUARIO";
+export const ELIMINAR_PRODUCTOS_CATEGORIA = "ELIMINAR_PRODUCTOS_CATEGORIA";
 
 export const obtenerProductos = () => {
   return (dispatch) => {
@@ -286,6 +289,28 @@ export const consultaProductoFavorito = (payload) => {
   return (dispatch) => {
     return axios.get(`http://localhost:3001/favorites/${payload.userId}/${payload.productoId}`)
       .then(res => dispatch({ type: PRODUCTO_FAVORITO, payload: res.data }))
+      .catch(error => console.log(error));
+  };
+};
+
+export const comentariosDeUsuario = (payload) => {
+  return (dispatch) => {
+    return axios.get(`http://localhost:3001/comments/user/${payload}`)
+      .then(res => dispatch({ type: COMENTARIOS_USUARIO, payload: res.data }))
+      .catch(error => console.log(error));
+  };
+};
+
+export const vaciarComentariosDeUsuario = () => {
+  return {
+    type: VACIAR_ESTADO_COMENTARIOS_USUARIO
+  };
+};
+
+export const eliminarProductosCategoria = (payload) => {
+  return (dispatch) => {
+    return axios.delete(`http://localhost:3001/categories/${payload}`)
+      .then(res => dispatch({ type: ELIMINAR_PRODUCTOS_CATEGORIA, payload: payload }))
       .catch(error => console.log(error));
   };
 };

@@ -1,7 +1,8 @@
 const { Router } = require("express");
 const router = Router();
-const { obtenerComentario, crearComentario } = require('../controllers/Comments');
+const { obtenerComentariosUsuario, obtenerComentario, crearComentario } = require('../controllers/Comments');
 
+router.get('/user/:id', obtenerComentariosUsuario);
 router.get('/:id', obtenerComentario);
 router.post('/', crearComentario);
 

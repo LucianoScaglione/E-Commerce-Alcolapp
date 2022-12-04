@@ -57,6 +57,7 @@
     overflow: hidden;
     white-space: nowrap;
     padding: 10px 0px;
+    width: 90%;
     max-width: 90%;
     margin: 0px auto;
 }

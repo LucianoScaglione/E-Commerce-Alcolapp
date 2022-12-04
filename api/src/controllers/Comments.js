@@ -1,5 +1,15 @@
 const { Comentarios, Usuarios, Productos } = require('../db');
 
+const obtenerComentariosUsuario = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const comentarios = await Comentarios.findAll({ where: { usuarioId: id }, include: Productos });
+    comentarios.length ? res.send(comentarios) : res.status(404).send("No existen comentarios registrados de este usuario");
+  } catch (error) {
+    next(error);
+  };
+};
+
 const obtenerComentario = async (req, res, next) => {
   try {
     const { id } = req.params;
@@ -17,8 +27,9 @@ const obtenerComentario = async (req, res, next) => {
 const crearComentario = async (req, res, next) => {
   try {
     const crearComentario = await Comentarios.create({
+      usuarioId: req.body.usuarioId,
       descripcion: req.body.descripcion,
-      UsuarioId: req.body.UsuarioId,
+      UsuarioId: req.body.usuarioId,
       ProductoId: req.body.id
     });
     res.send("Comentario creado correctamente");
@@ -28,6 +39,7 @@ const crearComentario = async (req, res, next) => {
 };
 
 module.exports = {
+  obtenerComentariosUsuario,
   obtenerComentario,
   crearComentario
 };

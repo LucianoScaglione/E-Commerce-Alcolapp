@@ -11,21 +11,32 @@ const registrarUsuario = async (req, res, next) => {
       res.status(404).send("No se llenaron los campos obligatorios");
     };
     const buscarEmail = await Usuarios.findOne({ where: { email: email } });
-    const encriptarContraseña = await bcrypt.hash(contraseña, 10);
-    let decodificarLink = new Buffer(imagen, 'base64');
-    let nombreImagenGuardada = `${Date.now()}.png`;
-    let AlmacenamientoLinkImagen = `public/upload/${nombreImagenGuardada}`;
-    let linkImagenARenderizar = `upload/${nombreImagenGuardada}`;
-    fs.writeFileSync(AlmacenamientoLinkImagen, decodificarLink);
     if (!buscarEmail) {
+      const encriptarContraseña = await bcrypt.hash(contraseña, 10);
+      if (imagen) {
+        let decodificarLink = new Buffer(imagen, 'base64');
+        let nombreImagenGuardada = `${Date.now()}.png`;
+        let AlmacenamientoLinkImagen = `public/upload/${nombreImagenGuardada}`;
+        let linkImagenARenderizar = `upload/${nombreImagenGuardada}`;
+        fs.writeFileSync(AlmacenamientoLinkImagen, decodificarLink);
+        const crearUsuario = await Usuarios.create({
+          nombre,
+          apellido,
+          imagen: `http://localhost:3001/${linkImagenARenderizar}`,
+          email,
+          contraseña: encriptarContraseña,
+          celular,
+          is_admin: is_admin ? is_admin : false
+        });
+      };
       const crearUsuario = await Usuarios.create({
         nombre,
         apellido,
-        imagen: imagen ? `http://localhost:3001/${linkImagenARenderizar}` : '',
+        imagen,
         email,
         contraseña: encriptarContraseña,
         celular,
-        is_admin: is_admin ? true : false
+        is_admin: is_admin ? is_admin : false
       });
       res.send({ 'creado': true, 'usuario': crearUsuario });
     } else {
@@ -93,7 +104,8 @@ const actualizarUsuario = async (req, res, next) => {
           apellido: req.body.apellido ? req.body.apellido : usuario.apellido,
           email: req.body.email ? req.body.email : usuario.email,
           imagen: `http://localhost:3001/${linkImagenARenderizar}`,
-          celular: req.body.celular ? req.body.celular : usuario.celular
+          celular: req.body.celular ? req.body.celular : usuario.celular,
+          is_admin: req.body.is_admin ? req.body.is_admin : false
         });
       };
       const actualizar = usuario.update({
@@ -101,7 +113,8 @@ const actualizarUsuario = async (req, res, next) => {
         apellido: req.body.apellido ? req.body.apellido : usuario.apellido,
         email: req.body.email ? req.body.email : usuario.email,
         imagen: usuario.imagen,
-        celular: req.body.celular ? req.body.celular : usuario.celular
+        celular: req.body.celular ? req.body.celular : usuario.celular,
+        is_admin: req.body.is_admin ? req.body.is_admin : false
       });
     };
     res.send({ "updated": true, "usuario": usuario });
