@@ -50,8 +50,8 @@ const Detail = () => {
   };
   useEffect(() => {
     !detalleProducto.length && dispatch(obtenerDetalleProducto(id))
-      .then(dispatch(obtenerComentarioProducto(id.id)))
-      .then(setLoading(false));
+    .then(setLoading(false));
+    dispatch(obtenerComentarioProducto(id.id));
     return () => {
       dispatch(vaciarEstados());
       setEsFavorito('');

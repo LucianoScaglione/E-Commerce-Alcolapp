@@ -41,7 +41,7 @@ const Card = ({ productos, setPaginaActual, filtros }) => {
                   }
                 </div>
                 <div className={style.divBoton}>
-                  <button onClick={() => addItemToCart(producto)} disabled={producto.cantidadDisponible === 0 && true} >+ Añadir al carrito</button>
+                  <button className={producto.cantidadDisponible === 0 ? style.botonDesactivado : style.botonActivado} onClick={() => addItemToCart(producto)} disabled={producto.cantidadDisponible === 0 && true} >+ Añadir al carrito</button>
                 </div>
               </div>
             </div>)

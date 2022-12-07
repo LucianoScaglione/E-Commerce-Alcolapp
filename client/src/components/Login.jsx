@@ -3,7 +3,6 @@ import { login } from './AuthService'
 import { Link, useHistory } from 'react-router-dom'
 import swal from 'sweetalert';
 import style from './styles/Login.module.css';
-// import GoogleLogin from 'react-google-login';
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -29,9 +28,6 @@ const Login = () => {
       });
     };
   };
-  // const responseGoogle = (response) => {
-  //   console.log(response);
-  // }
   return (
     <div className={style.contenedor}>
       <Link className={style.linkUrl} to='/'>
@@ -47,13 +43,6 @@ const Login = () => {
               <button>Ingresar</button>
             </form>
             <p className={style.texto}>¿No tienes cuenta? Regístrate ingresando <Link className={style.link} to='/register'>aquí</Link></p>
-            {/* <GoogleLogin
-         clientId="742408384506-7kij39igfdc24ad7i4ne0hpgqc1srm2m.apps.googleusercontent.com"
-         buttonText="Iniciar sesión con Google"
-         onSuccess={responseGoogle}
-         onFailure={responseGoogle}
-         cookiePolicy={'single_host_origin'}
-         /> */}
           </div>
         </div>
       </div>

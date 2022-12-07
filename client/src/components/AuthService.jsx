@@ -8,7 +8,6 @@ export const login = async (email, contraseña) => {
   const token = response.data.token;
   if (token) {
     localStorage.setItem('user', JSON.stringify(response.data));
-    console.log("json stringify: ", JSON.stringify(response.data));
   };
   setTimeout(() => {
     window.location.reload();

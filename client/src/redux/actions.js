@@ -79,7 +79,6 @@ export const actualizarProducto = (id, payload) => {
 };
 
 export const crearProducto = (payload) => {
-  console.log(payload)
   return () => {
     return axios.post('http://localhost:3001/products', payload)
       .then(res => { return res })
@@ -148,7 +147,6 @@ export const obtenerOrdenes = () => {
 };
 
 export const obtenerOrdenesPorId = (payload) => {
-  console.log("action: ", payload)
   return (dispatch) => {
     return axios.get(`http://localhost:3001/orders?id=${payload}`)
       .then(res => dispatch({ type: OBTENER_ORDEN_ID, payload: res.data }))
@@ -285,7 +283,6 @@ export const eliminarFavorito = (payload) => {
 };
 
 export const consultaProductoFavorito = (payload) => {
-  console.log("payload action: ", payload);
   return (dispatch) => {
     return axios.get(`http://localhost:3001/favorites/${payload.userId}/${payload.productoId}`)
       .then(res => dispatch({ type: PRODUCTO_FAVORITO, payload: res.data }))
